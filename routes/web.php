@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AttributesController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -37,10 +38,14 @@ Auth::routes();
 Route::controller(FrontendController::class)->group(function ()
     {
         Route::get('/','index');
+        Route::get('/aboutus','about');
+        Route::get('/contactus','contact');
+        Route::post('/about','message_store');
         Route::get('/collections','categories');
         Route::get('/collections/{category_slug}','products');
         Route::get('/collections/{category_slug}/{product_slug}','productView');
         Route::get('/new-arrivals','newArrival');
+        Route::get('/trending-products','trendingProducts');
         Route::get('/featured-products','featuredProducts');
         Route::get('search','searchProducts');
     });
@@ -63,6 +68,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('dashboard', [DashboardController::class,'index']);
+
+    Route::get('attributes', [AttributesController::class,'index']);
+    Route::get('attributes/create', [AttributesController::class,'create']);
+    Route::post('attributes/create', [AttributesController::class,'store']);
+    Route::get('attributes/{attribute}/edit', [AttributesController::class,'edit']);
+    Route::put('attributes/{attribute}', [AttributesController::class,'update']);
+    Route::get('attributes/{attribute}/delete', [AttributesController::class,'destroy']);
 
     Route::get('settings', [SettingController::class,'index']);
     Route::post('settings',[SettingController::class, 'store']);
@@ -94,8 +106,9 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
         Route::put('/products/{product}','update');
         Route::get('/products/{product_id}/delete','destory');
         Route::get('product-image/{product_image_id}/delete','destroyImage');
-        Route::post('product-color/{prod_color_id}/','updateProdColorQty');
-        Route::get('product-color/{product_color_id}/delete','deleteProductColor');
+
+        Route::post('product-color/{prod_color_id}','updateProdColorQty');
+        Route::get('product-color/{prod_color_id}/delete','deleteProdColor');
     });
 
     Route::get('/brands',App\Livewire\Admin\Brand\Index::class);

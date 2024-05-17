@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\category;
 use App\Models\Product;
 use App\Models\Slider;
-use App\Models\category;
+use App\Models\UserMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -18,10 +20,39 @@ class FrontendController extends Controller
         $featuredProducts = Product::where('featured','1')->latest()->take(14)->get();
         return view("frontend.index", compact('sliders','trendingProducts','newArrivalProducts','featuredProducts'));
     }
+    public function about()
+    {
+        return view("frontend.about-us");
+    }
+    public function contact()
+    {
+        return view("frontend.contact-us");
+    }
+    public function message_store(Request $request)
+    {
+        if(Auth::id()){
+            UserMessage::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'subject' => $request->subject,
+                'message' => $request->message,
+            ]);
+            return redirect()->back()->with('message','You Are Connected..');
+        }
+        else
+        {
+            return redirect('login');
+        }
+    }
     public function newArrival()
     {
         $newArrivalProducts = Product::latest()->take(16)->get();
         return view("frontend.pages.new-arrival", compact('newArrivalProducts'));
+    }
+    public function trendingProducts()
+    {
+        $trendingProducts = Product::where('trending','1')->latest()->get();
+        return view("frontend.pages.trendingProducts", compact('trendingProducts'));
     }
     public function featuredProducts()
     {

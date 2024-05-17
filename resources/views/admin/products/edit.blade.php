@@ -277,6 +277,7 @@
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    // '{{ csrf_token() }}'
                 }
             });
 
@@ -322,4 +323,3 @@
         });
     </script>
 @endsection
-

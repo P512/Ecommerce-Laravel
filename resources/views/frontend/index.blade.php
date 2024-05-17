@@ -3,12 +3,23 @@
 @section('content')
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
+    <style>
+        .custom-carousel-content,.slider_img{
+            position: relative;
+            animation-name: example;
+            animation-duration: 1s;
+        }
+        @keyframes example {
+            0%  {left:0px; top:200px;}
+            100% {left:0px; top:0px;}
+            }
+    </style>
     <div class="carousel-inner">
-
         @foreach ($sliders as $key => $sliderItem)
         <div class="carousel-item {{ $key == '0' ? 'active':'' }} ">
             @if($sliderItem->image)
-            <img src="{{ asset("$sliderItem->image") }}" class="d-block w-100" alt="..." style="height:500px;">
+            <img src="{{ asset("$sliderItem->image") }}" class="slider_img" style="height:350px; float:right; margin:90px 50px 90px 0px;">
+            <div style="background-color: {{ $appSetting->color_code }}; height:500px;"></div>
             @endif
             <div class="carousel-caption d-none d-md-block">
                 <div class="custom-carousel-content">
@@ -38,15 +49,18 @@
         </button>
     </div>
 
+    <script>
+        // Add JavaScript here if needed
+    </script>
+
+
     <div class="py-5 bg-white">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
                     <h4>Welcome To FlaWave</h4>
-                    <div class="underline"></div>
-                    <p>
-                        You can click on the item to generate column and select the format you want content in. Below that, you can select if you want an HTML tag in your content or no After that, you can choose how many paragraphs you want in the how many items to generate column. Then, you can choose the minimum and maximum words you want per sentence. Later, you can select the minimum and maximum sentences you want per paragraph. Finally, click on the button generate Taddalaa! You got your Lorem Ipsum content for your website.
-                    </p>
+                    <div class="underline w-100"></div>
+                    <p>FlaWave is an innovative e-commerce platform dedicated to promoting sustainability and eco-conscious consumerism. At FlaWave, we believe in harnessing the power of commerce to drive positive environmental change. Our mission is to provide a curated marketplace where customers can discover and purchase a wide range of environmentally friendly products, from organic clothing and sustainable home goods to renewable energy solutions and zero-waste lifestyle essentials.</p>
                 </div>
             </div>
         </div>
@@ -64,6 +78,8 @@
                     <div class="owl-carousel owl-theme four-carousel">
                         @foreach ($trendingProducts as $productItem)
                         <div class="item">
+                        <div class="box">
+
                             <div class="product-card">
                                 <div class="product-card-img">
                                     <label class="stock bg-success">New</label>
@@ -86,6 +102,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </div>
                         @endforeach
                     </div>
@@ -117,6 +134,8 @@
                     <div class="owl-carousel owl-theme four-carousel">
                         @foreach ($newArrivalProducts as $productItem)
                         <div class="item">
+                        <div class="box">
+
                             <div class="product-card">
                                 <div class="product-card-img">
                                     <label class="stock bg-success">New</label>
@@ -139,6 +158,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </div>
                         @endforeach
                     </div>
@@ -170,6 +190,8 @@
                     <div class="owl-carousel owl-theme four-carousel">
                         @foreach ($featuredProducts as $productItem)
                         <div class="item">
+                        <div class="box">
+
                             <div class="product-card">
                                 <div class="product-card-img">
                                     <label class="stock bg-success">New</label>
@@ -192,6 +214,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </div>
                         @endforeach
                     </div>

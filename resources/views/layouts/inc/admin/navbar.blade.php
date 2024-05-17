@@ -1,8 +1,8 @@
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="navbar-brand-wrapper d-flex justify-content-center">
       <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-        <a class="navbar-brand brand-logo" href="index.html">
-            <img src="{{ asset('uploads/user/Admin_logo.jpg') }}" alt="logo" style="width: 55px; height:55px;"/>
+        <a class="navbar-brand brand-logo" href="dashboard">
+            <img src="{{ asset('uploads/logo/'.$appSetting->logo) }}" alt="logo" style="width: 50px; height:50px;"/>
             Portal
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('uploads/user/Admin_logo.jpg') }}" alt="logo"/></a>
@@ -120,7 +120,7 @@
         </li>
         <li class="nav-item nav-profile dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-            <img src="{{ asset('uploads/user/Admin_logo.jpg') }}" alt="profile"/>
+            <img src="{{ asset('uploads/Icon_Details/Logo_Admin.png') }}" alt="profile"/>
             <span class="nav-profile-name">{{ Auth::user()->name }}</span>
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">

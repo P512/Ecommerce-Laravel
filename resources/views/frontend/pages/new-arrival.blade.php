@@ -10,7 +10,8 @@
             </div>
             @forelse ($newArrivalProducts as $productItem)
             <div class="col-md-3">
-                    <div class="product-card">
+                <div class="box">
+                    <div class="product-card ">
                             <div class="product-card-img">
                                 <label class="stock bg-success">New</label>
                                 @if($productItem->productImages->count()>0)
@@ -31,7 +32,7 @@
                                     <span class="original-price">₹{{ $productItem->original_price }}</span>
                                 </div>
                             </div>
-
+                    </div>
                     </div>
             </div>
                 @empty

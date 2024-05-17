@@ -187,7 +187,8 @@ class ProductController extends Controller
     {
         $prodColor = ProductColor::findOrFail($prod_color_id);
         $prodColor->delete();
-        return response()->json(['message' => 'Product Color Deleted']);
+        // return response()->json(['message' => 'Product Color Deleted']);
+        return redirect()->back()->with('message', 'Product Color Deleted');
     }
 }
 

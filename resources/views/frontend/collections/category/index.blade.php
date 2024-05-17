@@ -9,6 +9,7 @@
             </div>
             @forelse ($categories as $categoryItem)
             <div class="col-6 col-md-3">
+                <div class="box">
                 <div class="category-card">
                     <a href="{{ url('/collections/'.$categoryItem->slug) }}">
                         <div class="category-card-img">
@@ -18,6 +19,7 @@
                             <h5>{{ $categoryItem->name }}</h5>
                         </div>
                     </a>
+                </div>
                 </div>
             </div>
             @empty

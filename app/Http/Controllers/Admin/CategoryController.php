@@ -53,7 +53,7 @@ class CategoryController extends Controller
 
     public function update(CategoryRequest $request,category $category)
     {
-        // $category = Category::findOrFail($category);
+        $category = Category::findOrFail($category);
 
         $validatedData = $request->validated();
         $category->name = $validatedData["name"];

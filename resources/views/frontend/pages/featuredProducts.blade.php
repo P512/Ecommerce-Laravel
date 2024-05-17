@@ -10,6 +10,8 @@
             </div>
             @forelse ($featuredProducts as $productItem)
             <div class="col-md-3">
+                <div class="box">
+
                     <div class="product-card">
                             <div class="product-card-img">
                                 <label class="stock bg-success">New</label>
@@ -33,6 +35,7 @@
                             </div>
 
                     </div>
+                </div>
             </div>
                 @empty
                     <div class="col-md-12 p-2">

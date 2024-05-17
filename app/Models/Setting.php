@@ -24,5 +24,8 @@ class Setting extends Model
         'twitter',
         'instagram',
         'youtube',
+        'color_code',
+        'logo',
+        'map'
     ];
 }

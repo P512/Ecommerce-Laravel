@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend\Product;
 
+use App\Models\Attribute;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Wishlist;
@@ -10,7 +11,7 @@ use Livewire\Component;
 
 class View extends Component
 {
-    public $product, $category, $productColorSelectedQuantity, $quantityCount = 1, $productColorId;
+    public $product, $category, $productColorSelectedQuantity, $quantityCount = 1, $productColorId, $attribute, $selectedRam, $selectedStorage, $sellingPrice, $originalPrice;
 
     public function addToWishList($productId)
     {
@@ -214,16 +215,52 @@ class View extends Component
         }
 
     }
-    public function mount(Product $product, $category)
+    public function mount(Product $product, $category, Attribute $attribute)
     {
         $this->product = $product;
         $this->category = $category;
+        $this->attribute = $attribute;
+        $this->updatePrice();
     }
+
+    public function updatePrice()
+        {
+            $attributes_details = Attribute::where('product_id', $this->product->id)->get();
+
+            if(empty($this->selectedRam) && empty($this->selectedStorage))
+            {
+                $firstAttribute = $attributes_details->first();
+
+                if($firstAttribute)
+                {
+                    $this->sellingPrice = $firstAttribute->selling_price;
+                    $this->originalPrice = $firstAttribute->original_price;
+                    return;
+                }
+            }
+
+            $selectedAttribute = $attributes_details->where('ram',$this->selectedRam)
+                                                    ->where('storage',$this->selectedStorage)
+                                                    ->first();
+
+                if($selectedAttribute)
+                {
+                    $this->sellingPrice = $selectedAttribute->selling_price;
+                    $this->originalPrice = $selectedAttribute->original_price;
+                }
+                else
+                {
+                    $this->sellingPrice = "Product Not Avialable";
+                    $this->originalPrice = "";
+                }
+        }
     public function render()
     {
+        $attributes_details = Attribute::where('product_id', $this->product->id)->get();
         return view('livewire.frontend.product.view',[
             'product'=> $this->product,
             'category'=> $this->category,
+            'attributes_details'=> $attributes_details,
         ]);
     }
 }

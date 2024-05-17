@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class SettingController extends Controller
 {
@@ -16,6 +17,21 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         $setting = Setting::first();
+
+        if($request->hasFile('logo'))
+        {
+            $path = 'uploads/logo/'.$setting->logo;
+            if(File::exists($path))
+            {
+                File::delete($path);
+            }
+            $file = $request->file('logo');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('uploads/logo/', $filename);
+            $setting->logo = $filename;
+        }
+
         if ($setting)
         {
             $setting->update([
@@ -33,11 +49,20 @@ class SettingController extends Controller
                 'twitter'=> $request->twitter,
                 'instagram'=> $request->instagram,
                 'youtube'=> $request->youtube,
+                'color_code'=> $request->color_code,
+                'map'=> $request->map,
+                // 'logo' => $request->logo,
             ]);
             return redirect()->back()->with('message','Settings Saved');
         }
         else
         {
+
+            $file = $request->file('logo');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('uploads/logo/', $filename);
+
             Setting::create([
                 'website_name'=> $request->website_name,
                 'website_url'=> $request->website_url,
@@ -53,7 +78,12 @@ class SettingController extends Controller
                 'twitter'=> $request->twitter,
                 'instagram'=> $request->instagram,
                 'youtube'=> $request->youtube,
+                'color_code'=> $request->color_code,
+                'map'=> $request->map,
+                'logo' => $filename,
+                // 'logo' => $request->logo,
             ]);
+            $file->move('uploads/user/', $filename);
             return redirect()->back()->with('message','Settings Created');
         }
     }

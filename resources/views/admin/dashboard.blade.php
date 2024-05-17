@@ -8,7 +8,7 @@
             <h6 class="alert alert-success">{{ session('message') }},</h6>
         @endif
         <div class="me-md-3 me-xl-5">
-            <h2>Dashboard,</h2>
+            <h2>Dashboard</h2>
             <p class="mb-md-0">Your analytics dashboard template.</p>
             <hr>
         </div>

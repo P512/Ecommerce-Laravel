@@ -99,5 +99,29 @@
                 <span class="menu-title">Site Setting</span>
             </a>
         </li>
+
+        <li class="nav-item {{ Request::is('admin/attributes*') ? 'active':'' }}">
+            <a class="nav-link" data-bs-toggle="collapse"
+                                data-bs-target="#attributes"
+                                aria-expanded=" {{ Request::is('admin/attributes*') ? 'true':'false' }}"
+                                aria-controls="attributes">
+
+                <i class="mdi mdi-store menu-icon"></i>
+                <span class="menu-title">Attributes</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse {{ Request::is('admin/attributes*') ? 'show':'' }}" id="attributes">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('admin/attributes/create') ? 'active':'' }}" href="{{ url('admin/attributes/create') }}">
+                            Add Attributes </a>
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('admin/attributes') || Request::is('admin/attributes/*/edit') ? 'active':'' }}" href="{{ url('admin/attributes') }}">
+                        View Attributes </a>
+                </li>
+                </ul>
+            </div>
+        </li>
     </ul>
 </nav>
