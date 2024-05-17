@@ -18,9 +18,7 @@ return new class extends Migration
             $table->integer('original_price');
             $table->integer('selling_price');
             $table->unsignedBigInteger('product_id');
-            // $table->unsignedBigInteger('color_id')->nullable();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            // $table->foreign('color_id')->references('id')->on('colors')->onDelete('set null');
             $table->timestamps();
         });
     }

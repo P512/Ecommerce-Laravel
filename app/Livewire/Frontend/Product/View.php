@@ -54,6 +54,7 @@ class View extends Component
     }
 
     public function colorSelected($productColorId)
+    
     {
         $this->productColorId = $productColorId;
         $productColor = $this->product->productColors()->where('id',$productColorId)->first();

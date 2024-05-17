@@ -35,10 +35,7 @@
                             {{ $product->category->name }} / {{ $product->name }}
                         </p>
                         <p class="product-path">Brand : {{ $product->brand }}</p>
-                        {{-- <div>
-                            <span class="selling-price">₹{{ $product->selling_price }}</span>
-                            <span class="original-price">₹{{ $product->original_price }}</span>
-                        </div> --}}
+
                         <div>
                             <span class="selling-price" id="sellingPrice">{{ $sellingPrice }}</span>
                             <span class="original-price" id="originalPrice">{{ $originalPrice }}</span>
@@ -100,6 +97,21 @@
                                     @endforeach
                                 </select>
                             </div>
+                            {{-- <div class="mt-2 mb-3 col-md-3">
+                                <label>Select Color</label>
+                                <select wire:model="selectedColor" wire:change="colorSelected({{ $colorItem->id }})" class="form-control">
+                                    @if ($product->productColors->count() > 0)
+                                    @if ($product->productColors)
+                                    <option value="">None</option>
+                                    @foreach ($product->productColors as $colorItem)
+                                    <option value="{{ $colorItem->color->name }}">
+                                        {{ $colorItem->color->name }} Color
+                                    </option>
+                                    @endforeach
+                                    @endif
+                                    @endif
+                                </select>
+                            </div> --}}
                         </div>
 
 
