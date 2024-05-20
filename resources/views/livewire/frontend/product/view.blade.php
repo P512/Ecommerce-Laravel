@@ -97,27 +97,12 @@
                                     @endforeach
                                 </select>
                             </div>
-                            {{-- <div class="mt-2 mb-3 col-md-3">
-                                <label>Select Color</label>
-                                <select wire:model="selectedColor" wire:change="colorSelected({{ $colorItem->id }})" class="form-control">
-                                    @if ($product->productColors->count() > 0)
-                                    @if ($product->productColors)
-                                    <option value="">None</option>
-                                    @foreach ($product->productColors as $colorItem)
-                                    <option value="{{ $colorItem->color->name }}">
-                                        {{ $colorItem->color->name }} Color
-                                    </option>
-                                    @endforeach
-                                    @endif
-                                    @endif
-                                </select>
-                            </div> --}}
                         </div>
 
 
                         <div class="mt-2">
                             <div>
-                                <button type="button" wire:click="addToCart({{ $product->id }})" class="btn btn1">
+                                <button type="button" wire:click="addToCart({{ $product->id }},{{ $attribute->id }})" class="btn btn1">
                                     <i class="fa fa-shopping-cart"></i> Add To Cart
                                 </button>
 

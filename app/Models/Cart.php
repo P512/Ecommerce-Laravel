@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Attribute;
 use App\Models\Product;
 use App\Models\ProductColor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,13 +19,21 @@ class Cart extends Model
         'product_id',
         'product_color_id',
         'quantity',
+        'attribute_id'
     ];
 
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class,'product_id','id');
-    }public function productColor(): BelongsTo
+    }
+    public function productColor(): BelongsTo
     {
         return $this->belongsTo(ProductColor::class,'product_color_id','id');
     }
+
+    public function attributes(): BelongsTo
+    {
+        return $this->belongsTo(Attribute::class,'attribute_id','id');
+    }
+
 }

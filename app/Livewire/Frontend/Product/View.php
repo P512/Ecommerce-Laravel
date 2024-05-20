@@ -11,7 +11,7 @@ use Livewire\Component;
 
 class View extends Component
 {
-    public $product, $category, $productColorSelectedQuantity, $quantityCount = 1, $productColorId, $attribute, $selectedRam, $selectedStorage, $sellingPrice, $originalPrice;
+    public $product, $category, $productColorSelectedQuantity, $quantityCount = 1, $productColorId, $attribute, $selectedRam, $selectedStorage, $sellingPrice, $originalPrice, $attributeId;
 
     public function addToWishList($productId)
     {
@@ -54,7 +54,6 @@ class View extends Component
     }
 
     public function colorSelected($productColorId)
-    
     {
         $this->productColorId = $productColorId;
         $productColor = $this->product->productColors()->where('id',$productColorId)->first();
@@ -80,7 +79,7 @@ class View extends Component
         }
     }
 
-    public function addToCart(int $productId)
+    public function addToCart(int $productId,$attributeId)
     {
         if (Auth::check())
         {
@@ -94,6 +93,7 @@ class View extends Component
                     if (Cart::where('user_id',auth()->user()->id)
                         ->where('product_id',$productId)
                         ->where('product_color_id',$this->productColorId)
+                        ->where('attribute_id',$attributeId)
                         ->exists())
                         {
                             $this->dispatch('message',
@@ -114,6 +114,7 @@ class View extends Component
                                     'product_id'=> $productId,
                                     'product_color_id'=> $this->productColorId,
                                     'quantity'=> $this->quantityCount,
+                                    'attribute_id' => $attributeId,
                                 ]);
                                 $this->dispatch('CartAddedUpdated');
                                 $this->dispatch('message',
@@ -170,6 +171,7 @@ class View extends Component
                                     'user_id'=>auth()->user()->id,
                                     'product_id'=> $productId,
                                     'quantity'=> $this->quantityCount,
+                                    'attribute_id' => $attributeId,
                                 ]);
                                 $this->dispatch('message',
                                 text: 'Product Added To Cart',
@@ -216,6 +218,8 @@ class View extends Component
         }
 
     }
+
+    
     public function mount(Product $product, $category, Attribute $attribute)
     {
         $this->product = $product;
@@ -255,12 +259,6 @@ class View extends Component
             $this->sellingPrice = "Product Not Available";
             $this->originalPrice = "";
         }
-
-        // dd([
-        //     'selectedRam' => $this->selectedRam,
-        //     'selectedStorage' => $this->selectedStorage,
-        //     'attributes_details' => $attributes_details->toArray(),
-        // ]);
     }
 }
 

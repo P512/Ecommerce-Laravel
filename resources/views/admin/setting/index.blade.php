@@ -118,7 +118,7 @@
                         <div class="col-md-6 mb-3">
                             <label>Please Select Color: </label>
                             <input type="color" name="color_code" value="{{ $setting->color_code }}"><br><br>
-                            {{-- <input type="text" name="color-code" value="{{ $setting->color_code }}" class="form-control"/> --}}
+                            <input type="text" name="color-code" value="{{ $setting->color_code }}" class="form-control"/>
                         </div>
 
                     </div>

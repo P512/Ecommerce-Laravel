@@ -14,6 +14,7 @@ class CartShow extends Component
         $cartData = Cart::where('id',$cartId)->where('user_id',auth()->user()->id)->first();
         if($cartData)
         {
+            if ($cartData->quantity > 0)
             if($cartData->productColor()->where('id',$cartData->product_color_id)->exists())
             {
                 $productColor = $cartData->productColor()->where('id',$cartData->product_color_id)->first();
