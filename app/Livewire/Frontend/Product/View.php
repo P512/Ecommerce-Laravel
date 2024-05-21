@@ -11,8 +11,7 @@ use Livewire\Component;
 
 class View extends Component
 {
-    public $product, $category, $productColorSelectedQuantity, $quantityCount = 1, $productColorId, $attribute, $selectedRam, $selectedStorage, $sellingPrice, $originalPrice;
-
+    public $product, $category, $productColorSelectedQuantity, $quantityCount = 1, $productColorId, $attribute, $sellingPrice, $originalPrice;
     public function addToWishList($productId)
     {
         if (Auth::check())
