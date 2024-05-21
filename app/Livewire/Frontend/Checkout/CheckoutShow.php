@@ -62,6 +62,7 @@ class CheckoutShow extends Component
     public function codOrder()
     {
         $this->payment_mode = 'Cash On Delivery';
+        $this->payment_id = 'No Online Payment';
         $codOrder = $this->placeOrder();
         if ($codOrder)
         {
