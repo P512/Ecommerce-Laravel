@@ -35,11 +35,16 @@
                             {{ $product->category->name }} / {{ $product->name }}
                         </p>
                         <p class="product-path">Brand : {{ $product->brand }}</p>
-{{-- 
-                        <div>
+
+                        {{-- <div>
                             <span class="selling-price" id="sellingPrice">{{ $sellingPrice }}</span>
                             <span class="original-price" id="originalPrice">{{ $originalPrice }}</span>
                         </div> --}}
+
+                        <div>
+                            <span class="selling-price">₹{{ $product->selling_price }}</span>
+                            <span class="original-price">₹{{ $product->original_price }}</span>
+                        </div>
 
                         <div>
                             @if ($product->productColors->count() > 0)

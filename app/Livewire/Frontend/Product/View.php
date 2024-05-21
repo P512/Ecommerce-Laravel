@@ -11,7 +11,7 @@ use Livewire\Component;
 
 class View extends Component
 {
-    public $product, $category, $productColorSelectedQuantity, $quantityCount = 1, $productColorId, $attribute, $selectedRam, $selectedStorage, $sellingPrice, $originalPrice, $attributeId;
+    public $product, $category, $productColorSelectedQuantity, $quantityCount = 1, $productColorId, $attribute, $selectedRam, $selectedStorage, $sellingPrice, $originalPrice;
 
     public function addToWishList($productId)
     {
@@ -79,7 +79,7 @@ class View extends Component
         }
     }
 
-    public function addToCart(int $productId,$attributeId)
+    public function addToCart(int $productId)
     {
         if (Auth::check())
         {
@@ -93,7 +93,7 @@ class View extends Component
                     if (Cart::where('user_id',auth()->user()->id)
                         ->where('product_id',$productId)
                         ->where('product_color_id',$this->productColorId)
-                        ->where('attribute_id',$attributeId)
+                        // ->where('attribute_id',$attributeId)
                         ->exists())
                         {
                             $this->dispatch('message',
@@ -114,7 +114,7 @@ class View extends Component
                                     'product_id'=> $productId,
                                     'product_color_id'=> $this->productColorId,
                                     'quantity'=> $this->quantityCount,
-                                    'attribute_id' => $attributeId,
+                                    // 'attribute_id' => $attributeId,
                                 ]);
                                 $this->dispatch('CartAddedUpdated');
                                 $this->dispatch('message',
@@ -171,7 +171,7 @@ class View extends Component
                                     'user_id'=>auth()->user()->id,
                                     'product_id'=> $productId,
                                     'quantity'=> $this->quantityCount,
-                                    'attribute_id' => $attributeId,
+                                    // 'attribute_id' => $attributeId,
                                 ]);
                                 $this->dispatch('message',
                                 text: 'Product Added To Cart',
