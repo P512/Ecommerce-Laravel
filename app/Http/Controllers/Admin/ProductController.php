@@ -95,7 +95,6 @@ class ProductController extends Controller
     public function update(ProductFormRequest $request, int $product_id)
     {
         $validatedData = $request->validated();
-
         $product = Category::findOrFail($validatedData['category_id'])
             ->products()->where('id', $product_id)->first();
         if ($product) {
@@ -191,5 +190,3 @@ class ProductController extends Controller
         return redirect()->back()->with('message', 'Product Color Deleted');
     }
 }
-
-
