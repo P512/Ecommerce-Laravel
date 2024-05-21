@@ -13,17 +13,17 @@
             <div class="card">
                 <div class="card-header">
                     <h3>Edit Attributes
-                        <a href="{{ url('admin/attributes') }}" class="btn btn-primary btn-sm text-white float-end">BACK</a>
+                        <a href="{{ url('admin/attributes/details') }}" class="btn btn-primary btn-sm text-white float-end">BACK</a>
                     </h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ url('admin/attributes/'.$attribute->id) }}" method="POST">
+                    <form action="{{ url('admin/attributes/details'.$details->id) }}" method="POST">
                         @csrf
                         @method('PUT')
 
                         <div class="mb-3">
-                            <label>Attribute</label>
-                            <input type="text" name="name" value="{{ $attribute->name }}" class="form-control">
+                            <label>Attribute Data</label>
+                            <input type="text" name="data" value="{{ $details->data }}" class="form-control">
                         </div>
 
                         <div class="mb-3">

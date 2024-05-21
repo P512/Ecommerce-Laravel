@@ -19,36 +19,9 @@
                 <div class="card-body">
                     <form action="{{ url('admin/attributes/create') }}" method="POST">
                         @csrf
-                        <div class="row">
                             <div class="mb-3">
-                                <label>Select Product</label>
-                                    <select name="product_id" class="form-control">
-                                        @foreach ($products as $product)
-                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                        @endforeach
-                                    </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label>Ram</label>
-                                <input type="text" name="ram" placeholder="Please Enter Ram" class="form-control">
-                            </div>
-
-                            <div class="mb-3">
-                                <label>Storage</label>
-                                <input type="text" name="storage" placeholder="Please Enter Storage" class="form-control">
-                            </div>
-
-
-                            <div class="mb-3">
-                                <label>Original Price</label>
-                                <input type="number" name="original_price" placeholder="Please Enter Original Price" class="form-control" />
-                            </div>
-
-
-                            <div class="mb-3">
-                                <label>Selling Price</label>
-                                <input type="number" name="selling_price" placeholder="Please Enter Selling Price" class="form-control" />
+                                <label>Attribute</label>
+                                <input type="text" name="name" placeholder="Please Enter Attribute" class="form-control">
                             </div>
 
                             <div class="mb-3">

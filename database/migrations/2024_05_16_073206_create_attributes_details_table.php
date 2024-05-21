@@ -13,10 +13,7 @@ return new class extends Migration
     {
         Schema::create('attributes_details', function (Blueprint $table) {
             $table->id();
-            $table->string('ram')->nullable();
-            $table->string('storage')->nullable();
-            $table->integer('original_price');
-            $table->integer('selling_price');
+            $table->string('name')->nullable();
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();

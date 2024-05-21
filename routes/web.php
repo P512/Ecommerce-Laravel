@@ -76,6 +76,15 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::put('attributes/{attribute}', [AttributesController::class,'update']);
     Route::get('attributes/{attribute}/delete', [AttributesController::class,'destroy']);
 
+    Route::get('attributes/details', [AttributesController::class,'indexdata']);
+    Route::get('attributes/create_details', [AttributesController::class,'create_details']);
+    Route::post('attributes/create_details', [AttributesController::class,'store_details']);
+    Route::get('attributes/details/{details}/edit', [AttributesController::class,'edit_details']);
+    Route::put('attributes/details/{attribute}', [AttributesController::class,'update_details']);
+    Route::get('attributes/details/{attribute}/delete', [AttributesController::class,'destroy_details']);
+
+
+
     Route::get('settings', [SettingController::class,'index']);
     Route::post('settings',[SettingController::class, 'store']);
 

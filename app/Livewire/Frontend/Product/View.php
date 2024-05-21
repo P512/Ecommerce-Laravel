@@ -219,56 +219,56 @@ class View extends Component
 
     }
 
-    
+
     public function mount(Product $product, $category, Attribute $attribute)
     {
         $this->product = $product;
         $this->category = $category;
         $this->attribute = $attribute;
-        $this->updatePrice();
+        // $this->updatePrice();
     }
 
-    public function updatePrice()
-    {
-        $attributes_details = Attribute::where('product_id', $this->product->id)->get();
+//     public function updatePrice()
+//     {
+//         $attributes_details = Attribute::where('product_id', $this->product->id)->get();
 
-        // Default Price Not Selected Any Option
-        if (empty($this->selectedRam) && empty($this->selectedStorage)) {
-            $firstAttribute = $attributes_details->first();
+//         // Default Price Not Selected Any Option
+//         if (empty($this->selectedRam) && empty($this->selectedStorage)) {
+//             $firstAttribute = $attributes_details->first();
 
-            if ($firstAttribute) {
-                $this->sellingPrice = '₹'.$firstAttribute->selling_price;
-                $this->originalPrice = '₹'.$firstAttribute->original_price;
-                return;
-            }
-        }
-        else
-        {
-        // Select Options
-        $selectedAttribute = $attributes_details->where('ram', $this->selectedRam ?? $attributes_details->first()->ram)
-        ->where('storage', $this->selectedStorage ?? $attributes_details->first()->storage)
-        ->first();
+//             if ($firstAttribute) {
+//                 $this->sellingPrice = '₹'.$firstAttribute->selling_price;
+//                 $this->originalPrice = '₹'.$firstAttribute->original_price;
+//                 return;
+//             }
+//         }
+//         else
+//         {
+//         // Select Options
+//         $selectedAttribute = $attributes_details->where('ram', $this->selectedRam ?? $attributes_details->first()->ram)
+//         ->where('storage', $this->selectedStorage ?? $attributes_details->first()->storage)
+//         ->first();
 
-        if ($selectedAttribute)
-        {
-            $this->sellingPrice = '₹'.$selectedAttribute->selling_price;
-            $this->originalPrice = '₹'.$selectedAttribute->original_price;
-        }
-        else
-        {
-            $this->sellingPrice = "Product Not Available";
-            $this->originalPrice = "";
-        }
-    }
-}
+//         if ($selectedAttribute)
+//         {
+//             $this->sellingPrice = '₹'.$selectedAttribute->selling_price;
+//             $this->originalPrice = '₹'.$selectedAttribute->original_price;
+//         }
+//         else
+//         {
+//             $this->sellingPrice = "Product Not Available";
+//             $this->originalPrice = "";
+//         }
+//     }
+// }
 
     public function render()
     {
-        $attributes_details = Attribute::where('product_id', $this->product->id)->get();
+        // $attributes_details = Attribute::where('product_id', $this->product->id)->get();
         return view('livewire.frontend.product.view', [
             'product' => $this->product,
             'category' => $this->category,
-            'attributes_details' => $attributes_details,
+            // 'attributes_details' => $attributes_details,
         ]);
     }
 }

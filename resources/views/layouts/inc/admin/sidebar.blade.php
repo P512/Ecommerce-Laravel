@@ -13,9 +13,8 @@
             </a>
         </li>
         <li class="nav-item {{ Request::is('admin/category*') ? 'active' : '' }}">
-            <a class="nav-link" data-bs-toggle="collapse"
-                                data-bs-target="#category"
-                                aria-expanded="{{ Request::is('admin/category*') ? 'true' : 'flase' }}">
+            <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#category"
+                aria-expanded="{{ Request::is('admin/category*') ? 'true' : 'flase' }}">
                 <i class=" mdi mdi-view-grid menu-icon"></i>
                 <span class="menu-title">Category</span>
                 <i class="menu-arrow"></i>
@@ -23,19 +22,20 @@
             <div class="collapse {{ Request::is('admin/category*') ? 'show' : '' }}" id="category">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('admin/category/create') ? 'active' : '' }}" href="{{ url('admin/category/create') }}">Add Category</a>
+                        <a class="nav-link {{ Request::is('admin/category/create') ? 'active' : '' }}"
+                            href="{{ url('admin/category/create') }}">Add Category</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('admin/category') || Request::is('admin/category/*/edit') ? 'active' : '' }}" href="{{ url('admin/category/') }}">View Category</a>
+                        <a class="nav-link {{ Request::is('admin/category') || Request::is('admin/category/*/edit') ? 'active' : '' }}"
+                            href="{{ url('admin/category/') }}">View Category</a>
                     </li>
                 </ul>
             </div>
         </li>
         <li class="nav-item {{ Request::is('admin/products*') ? 'active' : '' }}">
-            <a class="nav-link" data-bs-toggle="collapse"
-                                data-bs-target="#products"
-                                aria-expanded="{{ Request::is('admin/products*') ? 'true' : 'flase' }}" >
+            <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#products"
+                aria-expanded="{{ Request::is('admin/products*') ? 'true' : 'flase' }}">
                 <i class=" mdi mdi-cart-plus menu-icon"></i>
                 <span class="menu-title">Products</span>
                 <i class="menu-arrow"></i>
@@ -46,7 +46,8 @@
                         <a class="nav-link" href="{{ url('admin/products/create') }}">Add Product</a>
                     </li>
 
-                    <li class="nav-item {{ Request::is('admin/products') || Request::is('admin/products/*/edit') ? 'active' : '' }}">
+                    <li
+                        class="nav-item {{ Request::is('admin/products') || Request::is('admin/products/*/edit') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('admin/products') }}">View Product</a>
                     </li>
                 </ul>
@@ -65,10 +66,8 @@
             </a>
         </li>
         <li class="nav-item {{ Request::is('admin/users*') ? 'active':'' }}">
-            <a class="nav-link" data-bs-toggle="collapse"
-                                data-bs-target="#users"
-                                aria-expanded=" {{ Request::is('admin/users*') ? 'true':'false' }}"
-                                aria-controls="users">
+            <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#users"
+                aria-expanded=" {{ Request::is('admin/users*') ? 'true':'false' }}" aria-controls="users">
 
                 <i class="mdi mdi-account menu-icon"></i>
                 <span class="menu-title">Users</span>
@@ -77,13 +76,15 @@
             <div class="collapse {{ Request::is('admin/users*') ? 'show':'' }}" id="users">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('admin/users/create') ? 'active':'' }}" href="{{ url('admin/users/create') }}">
+                        <a class="nav-link {{ Request::is('admin/users/create') ? 'active':'' }}"
+                            href="{{ url('admin/users/create') }}">
                             Add User </a>
-                        </li>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('admin/users') || Request::is('admin/users/*/edit') ? 'active':'' }}" href="{{ url('admin/users') }}">
-                        View Users </a>
-                </li>
+                        <a class="nav-link {{ Request::is('admin/users') || Request::is('admin/users/*/edit') ? 'active':'' }}"
+                            href="{{ url('admin/users') }}">
+                            View Users </a>
+                    </li>
                 </ul>
             </div>
         </li>
@@ -101,10 +102,8 @@
         </li>
 
         <li class="nav-item {{ Request::is('admin/attributes*') ? 'active':'' }}">
-            <a class="nav-link" data-bs-toggle="collapse"
-                                data-bs-target="#attributes"
-                                aria-expanded=" {{ Request::is('admin/attributes*') ? 'true':'false' }}"
-                                aria-controls="attributes">
+            <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#attributes"
+                aria-expanded=" {{ Request::is('admin/attributes*') ? 'true':'false' }}" aria-controls="attributes">
 
                 <i class="mdi mdi-store menu-icon"></i>
                 <span class="menu-title">Attributes</span>
@@ -113,13 +112,26 @@
             <div class="collapse {{ Request::is('admin/attributes*') ? 'show':'' }}" id="attributes">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('admin/attributes/create') ? 'active':'' }}" href="{{ url('admin/attributes/create') }}">
+                        <a class="nav-link {{ Request::is('admin/attributes/create') ? 'active':'' }}"
+                            href="{{ url('admin/attributes/create') }}">
                             Add Attributes </a>
-                        </li>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('admin/attributes') || Request::is('admin/attributes/*/edit') ? 'active':'' }}" href="{{ url('admin/attributes') }}">
-                        View Attributes </a>
-                </li>
+                        <a class="nav-link {{ Request::is('admin/attributes') || Request::is('admin/attributes/*/edit') ? 'active':'' }}"
+                            href="{{ url('admin/attributes') }}">
+                            View Attributes </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('admin/attributes/create_details') ? 'active':'' }}"
+                            href="{{ url('admin/attributes/create_details') }}">
+                            Add Attribute_Details </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('admin/attributes_details') || Request::is('admin/attributes/details/*/edit') ? 'active':'' }}"
+                            href="{{ url('admin/attributes/details') }}">
+                            View Attributes_Details </a>
+                    </li>
                 </ul>
             </div>
         </li>

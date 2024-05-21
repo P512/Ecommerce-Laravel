@@ -35,11 +35,11 @@
                             {{ $product->category->name }} / {{ $product->name }}
                         </p>
                         <p class="product-path">Brand : {{ $product->brand }}</p>
-
+{{-- 
                         <div>
                             <span class="selling-price" id="sellingPrice">{{ $sellingPrice }}</span>
                             <span class="original-price" id="originalPrice">{{ $originalPrice }}</span>
-                        </div>
+                        </div> --}}
 
                         <div>
                             @if ($product->productColors->count() > 0)
@@ -76,7 +76,7 @@
                             </div>
                         </div><br>
 
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="mt-2 mb-3 col-md-3">
                                 <label>Select Ram</label>
                                 <select wire:model="selectedRam" wire:change="updatePrice" class="form-control">
@@ -97,7 +97,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
 
 
                         <div class="mt-2">
